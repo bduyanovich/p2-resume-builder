@@ -57,6 +57,27 @@ var education = {
 	]
 }
 
+//Sacramento info found at: http://www.citytowninfo.com/places/california/sacramento
+//Roseville info found at: http://www.roseville.ca.us/visiting/about_roseville.asp
+//Rancho Cordova info found at: http://www.cityofranchocordova.org/Index.aspx?page=22
+
+var locationInfo = {
+	"locations" : [
+		{
+			"location" : "Sacramento, CA",
+			"info" : "Sacramento is the capital of the State of California and is the fifth largest city in the state. According to U.S. Census data, as of 2004 the Sacramento metropolitan area was the 26th largest metropolitan statistical area (MSA) in the United States with a population of slightly over 2 million people."
+		},
+		{
+			"location" : "Roseville, CA",
+			"info" : "Roseville is a progressive city with its eye on the future, but all the while retains and celebrates its rich historical railroad roots. Located in Placer County along the eastern edge of the Sacramento Valley at the base of the Sierra Nevada foothills, Roseville is a mere 16 miles from Sacramento, the state capital. Typical of other California cities, Roseville’s climate ranges from hot, dry summers to mild winters. What started as a town developed by disappointed miners from the famed Gold Rush has blossomed into a thoroughly developed, independent city boasting an estimated population of 104,655 residents (as of January 1, 2006). Roseville incorporated on April 10, 1909 and is a charter city operating under a City Manager-Council form of government."
+		},
+		{
+			"location" : "Rancho Cordova, CA",
+			"info" : "On July 1, 2003, after more than 20 years of advocacy, the City of Rancho Cordova officially incorporated, becoming the 478th city in the State of California. Located in the eastern part of Sacramento County, Rancho Cordova is a community with a rich history including the first 12 miles of railroad in California, a thriving military base in its time, and the home of a successful aerospace company."
+		}
+	]
+}
+
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 $("#header").prepend(formattedRole);

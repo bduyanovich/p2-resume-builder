@@ -65,7 +65,7 @@ The International Name challenge in Lesson 2 where you'll create a function that
 $(document).ready(function() {
   $('button').click(function() {
     var iName = inName() || function(){};
-    $('#name').html(iName);  
+    $('#name').html(iName);
   });
 });
 
@@ -105,12 +105,16 @@ function initializeMap() {
 
   var locations;
 
-  var mapOptions = {
-    disableDefaultUI: true
-  };
+  var mapOptions = {};
 
+  map = new google.maps.Map(document.querySelector('#map'), mapOptions);
 
-  map = new google.maps.Map(document.querySelector('#map-div'), mapOptions);
+  var contentString;
+  var i;
+
+  for (i=0; i<locationInfo.locations.length; i++) {
+    contentString = locationInfo.locations[i].info;
+  }
 
 
   /*
@@ -164,12 +168,16 @@ function initializeMap() {
     // or hover over a pin on a map. They usually contain more information
     // about a location.
     var infoWindow = new google.maps.InfoWindow({
-      content: name
+      content: '<strong>' + name + '</strong>' + '<p>' + contentString + '</p>'
     });
 
     // hmmmm, I wonder what this is about...
-    google.maps.event.addListener(marker, 'click', function() {
-      // your code goes here!
+    google.maps.event.addListener(marker, 'mouseover', function() {
+      infoWindow.open(map,marker);
+    });
+
+    google.maps.event.addListener(marker, 'mouseout', function() {
+      infoWindow.close(map,marker);
     });
 
     // this is where the pin actually gets added to the map.
