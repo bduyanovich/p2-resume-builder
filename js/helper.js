@@ -49,7 +49,7 @@ var HTMLschoolDates = '<div class="date-text">%data%</div>';
 var HTMLschoolLocation = '<div class="location-text">%data%</div>';
 var HTMLschoolMajor = '<em><br>Major: %data%</em>';
 
-var HTMLonlineClasses = '<h3>Online Classes</h3>';
+var HTMLonlineClasses = '<h3>Online Classes</h3><div class="online-entry"></div>';
 var HTMLonlineTitle = '<a href="#">%data%';
 var HTMLonlineSchool = ' - %data%</a>';
 var HTMLonlineDates = '<div class="date-text">%data%</div>';
@@ -109,14 +109,6 @@ function initializeMap() {
 
   map = new google.maps.Map(document.querySelector('#map'), mapOptions);
 
-  var contentString;
-  var i;
-
-  for (i=0; i<locationInfo.locations.length; i++) {
-    contentString = locationInfo.locations[i].info;
-  }
-
-
   /*
   locationFinder() returns an array of every location string from the JSONs
   written for bio, education, and work.
@@ -161,14 +153,15 @@ function initializeMap() {
     var marker = new google.maps.Marker({
       map: map,
       position: placeData.geometry.location,
-      title: name
+      title: name,
+      animation: google.maps.Animation.DROP
     });
 
     // infoWindows are the little helper windows that open when you click
     // or hover over a pin on a map. They usually contain more information
     // about a location.
     var infoWindow = new google.maps.InfoWindow({
-      content: '<strong>' + name + '</strong>' + '<p>' + contentString + '</p>'
+      content: name
     });
 
     // hmmmm, I wonder what this is about...

@@ -17,7 +17,7 @@ var projects = {
 			"title" : "Portfolio Project 1",
 			"dates" : "2015",
 			"description" : "Build a portfolio website to showcase projects",
-			"images" : ["images/197x148.gif"],
+			"images" : ["images/p1-portfolio.jpg"],
 			"url" : "https://github.com/bduyanovich/Portfolio-Project-1"
 		}
 	]
@@ -45,14 +45,14 @@ var education = {
 			"dates" : "2010",
 			"degree" : "BS",
 			"url" : "http://www.csus.edu/"
-		},
+		}
+	],
+	"online" : [
 		{
-			"name" : "Consumnes River College",
-			"location" : "Sacramento, CA",
-			"major" : "Business",
-			"dates" : "2008",
-			"degree" : "AA",
-			"url" : "https://www.crc.losrios.edu/"
+			"name" : "Udacity",
+			"course" : "Front-End Web Developer Nanodegree",
+			"url" : "https://www.udacity.com/",
+			"dates" : "2015"
 		}
 	]
 }
@@ -83,7 +83,7 @@ var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
 
-var formattedBioPic = HTMLbioPic.replace("%data%", "images/fry.jpg");
+var formattedBioPic = HTMLbioPic.replace("%data%", "images/brandon.jpg");
 $("#header").append(formattedBioPic);
 
 var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
@@ -198,8 +198,26 @@ education.display = function() {
 		var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
 		$(".education-entry:last").append(formattedSchoolMajor);
 	}
+
+	$("#education").append(HTMLonlineClasses);
+	var onlinEducationDIV = $("#education")
+	for (online in education.online) {
+		var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.online[online].course);
+		formattedOnlineTitle = formattedOnlineTitle.replace("#", education.online[online].url);
+		var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.online[online].name);
+		var combinedOnlineSchool = formattedOnlineTitle + formattedOnlineSchool;
+		$(".online-entry:last").append(combinedOnlineSchool);
+
+		var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.online[online].dates);
+		$(".online-entry:last").append(formattedOnlineDates);
+
+		var formattedOnlineUrl = HTMLonlineURL.replace("%data%", education.online[online].url);
+		$(".online-entry:last").append(formattedOnlineUrl);
+	}
 }
 
 education.display();
+
+
 
 $("#map-div").append(googleMap);
