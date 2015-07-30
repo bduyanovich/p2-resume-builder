@@ -105,6 +105,8 @@ function initializeMap() {
 
   var locations;
 
+  var markerContent;
+
   var mapOptions = {};
 
   map = new google.maps.Map(document.querySelector('#map'), mapOptions);
@@ -135,6 +137,17 @@ function initializeMap() {
 
     return locations;
   }
+
+  function locationContent() {
+    var markerContent =[];
+
+    for (var info in locationInfo.locations) {
+      markerContent.push(locationInfo.locations[info].info);
+    }
+  }
+
+  markerContent = locationContent();
+  console.log(markerContent);
 
   /*
   createMapMarker(placeData) reads Google Places search results to create map pins.
@@ -189,6 +202,7 @@ function initializeMap() {
   function callback(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       createMapMarker(results[0]);
+      console.log(results[0]);
     }
   }
 
@@ -225,7 +239,6 @@ function initializeMap() {
   // pinPoster(locations) creates pins on the map for each location in
   // the locations array
   pinPoster(locations);
-
 }
 
 /*
