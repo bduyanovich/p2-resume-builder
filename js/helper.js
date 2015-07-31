@@ -88,8 +88,6 @@ $(document).click(function(loc) {
   // your code goes here!
 });
 
-
-
 /*
 This is the fun part. Here's where we generate the custom Google Map for the website.
 See the documentation below for more details.
@@ -104,8 +102,6 @@ Start here! initializeMap() is called when page is loaded.
 function initializeMap() {
 
   var locations;
-
-  var markerContent;
 
   var mapOptions = {};
 
@@ -138,17 +134,6 @@ function initializeMap() {
     return locations;
   }
 
-  function locationContent() {
-    var markerContent =[];
-
-    for (var info in locationInfo.locations) {
-      markerContent.push(locationInfo.locations[info].info);
-    }
-  }
-
-  markerContent = locationContent();
-  console.log(markerContent);
-
   /*
   createMapMarker(placeData) reads Google Places search results to create map pins.
   placeData is the object returned from search results containing information
@@ -173,6 +158,7 @@ function initializeMap() {
     // infoWindows are the little helper windows that open when you click
     // or hover over a pin on a map. They usually contain more information
     // about a location.
+
     var infoWindow = new google.maps.InfoWindow({
       content: name
     });

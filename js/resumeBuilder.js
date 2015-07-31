@@ -218,6 +218,4 @@ education.display = function() {
 
 education.display();
 
-
-
 $("#map-div").append(googleMap);
